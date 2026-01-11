@@ -1,15 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {Container, AppBar, Typography, Grow, Grid} from '@mui/material'
+import memories from './images/memories.jpg'
+import Posts from './components/Posts/Posts'
+import Form from './components/Form/Form'
+import useStyles from "./styles.js"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const classes = useStyles()
 
   return (
-    <>
-      <h1></h1>
-    </>
+    <Container maxWidth='lg'>
+      <AppBar className={classes.appBar} position='static' color='inherit'>
+        <Typography className={classes.heading} variant='h2' align='center'>Memories</Typography>
+        <img className={classes.image} src={memories} alt="memories" height='60'/>
+      </AppBar>
+
+      <Grow in>
+        <Container>
+          <Grid container justify="space-between" alignItems="stretch" spacing={3}>
+            <Grid item xs={12} sm={7}>
+              <Posts />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Form />
+            </Grid>
+          </Grid>
+        </Container>
+      </Grow>
+    </Container>
   )
 }
 
